@@ -4,3 +4,4 @@ client = MongoClient("mongodb+srv://yanie:qM0somsYwQXQEM9P@cluster0.qarpj.mongod
 db = client["trashTalk"]
 users_collection = db["User"]
 gas_collection = db["gasRecords"]
+

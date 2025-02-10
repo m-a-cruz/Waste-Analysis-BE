@@ -1,17 +1,25 @@
-from flask import Blueprint, request, jsonify
-from flask_bcrypt import Bcrypt
-import jwt
-import datetime
+from flask import Blueprint, request, jsonify,Response
+from bson import json_util
 from database import gas_collection
 from middleware import SECRET_KEY
+from middleware import token_required
 
-record_bp = Blueprint('record', __name__)
+charts_bp = Blueprint('record', __name__)
+# response = Response(json_util.dumps(document), mimetype='application/json')
 
 
-@record_bp.route('/records', methods=['GET'])
+@charts_bp.route('/records', methods=['GET'])
+@token_required
 def get_gas_records():
     records = list(gas_collection.find())
-    return jsonify(records), 200
+    response = Response(json_util.dumps(records), mimetype='application/json')
+    return response, 200
+
+@charts_bp.route('/charts', methods=['GET'])
+@token_required
+def get_gas_chart():
+    gas_data = list(gas_collection.find({}, {'_id': False}))
+    return jsonify(gas_data), 200
 
 
 

@@ -1,6 +1,7 @@
 from flask import Flask, jsonify
 from flask_cors import CORS
 from auth import auth_bp
+from gasRecord import charts_bp
 from middleware import log_request, token_required
 
 app = Flask(__name__)
@@ -17,6 +18,7 @@ def protected_route():
 
 
 app.register_blueprint(auth_bp)
+app.register_blueprint(charts_bp)
 
 if __name__ == "__main__":
     app.run(debug=True)
