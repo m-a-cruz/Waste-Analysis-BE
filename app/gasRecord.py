@@ -18,8 +18,8 @@ def get_gas_records():
 @charts_bp.route('/charts', methods=['GET'])
 @token_required
 def get_gas_chart():
-    gas_data = list(gas_collection.find({}, {'_id': False}))
-    return jsonify(gas_data), 200
+    gas_chart = {"CHART_URI": "https://charts.mongodb.com/charts-trashtalk-friltrw/embed/charts?id=e38f11b2-1149-45ae-97c0-e6895319f030&maxDataAge=3600&theme=dark&autoRefresh=true"}
+    return jsonify(gas_chart), 200
 
 
 
