@@ -1,8 +1,0 @@
-{
-    "mdb.presetConnections": [
-        {
-            "name": "Preset Connection",
-            "connectionString": "mongodb+srv://yanie:gonkillua0515@cluster0.qarpj.mongodb.net/"
-        }
-    ]
-}
