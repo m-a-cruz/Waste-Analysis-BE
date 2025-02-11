@@ -1,0 +1,4 @@
+- Setup Virtual Environment
+- Activate .venv
+- Install packages needed
+- Store important information in .env
