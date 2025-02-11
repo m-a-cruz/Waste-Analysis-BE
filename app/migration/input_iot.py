@@ -1,0 +1,1 @@
+# Code for input data from IoT device and computer vision

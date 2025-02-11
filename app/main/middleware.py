@@ -1,11 +1,8 @@
 from flask import request, jsonify
 import jwt
 from functools import wraps
-import datetime
+import management.encryptpassword as encrypt
 
-SECRET_KEY = 'secret'
-
-# Logging Middleware
 def log_request(f):
     @wraps(f)
     def decorated_function(*args, **kwargs):
@@ -13,7 +10,6 @@ def log_request(f):
         return f(*args, **kwargs)
     return decorated_function
 
-#  JWT Authentication Middleware
 def token_required(f):
     @wraps(f)
     def decorated(*args, **kwargs):
@@ -22,13 +18,11 @@ def token_required(f):
         if not token:
             return jsonify({"message": "Token is missing"}), 401
         try:
-            decoded = jwt.decode(token.split()[1], SECRET_KEY, algorithms=["HS256"])
-            request.user = decoded
+            # decoded = jwt.decode(token.split()[1], cipher.SECRET_KEY, algorithms=["HS256"])
+            request.user = encrypt.decode_token(token)
         except jwt.ExpiredSignatureError:
             return jsonify({"message": "Token expired!"}), 401
         except jwt.InvalidTokenError:
             return jsonify({"message": "Token is invalid"}), 401
         return f(*args, **kwargs)
     return decorated
-
-    
