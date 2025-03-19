@@ -55,5 +55,5 @@ def login():
         return jsonify({"error": "Invalid credentials"}), 401
     
     database.notification_collection.insert_one({"message": "Welcome Back Admin", "type": "Info", "status": "Unread", "timestamp": datetime.datetime.utcnow()})
-    
-    return jsonify({"id": str(user["_id"]), "token": encrypt.generate_token(user["email"])}), 200
+    # 
+    return jsonify({"id": str(user["_id"]), "name": user["name"], "email": user["email"], "token": encrypt.generate_token(user["email"])}), 200
