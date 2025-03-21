@@ -4,7 +4,7 @@ from management.database import database
 import datetime
 
 def fetch_notif():
-    notification = list(database.notification_collection.find())
+    notification = list(database.notification_collection.find().sort("timestamp", -1))
     response = Response(json_util.dumps(notification), mimetype='application/json')
     return response, 200
 
