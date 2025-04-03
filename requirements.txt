@@ -12,12 +12,6 @@ Flask==3.1.0
 Flask-Bcrypt==1.0.1
 Flask-Cors==5.0.0
 Flask-JWT-Extended==4.7.1
-google-api-core==2.24.2
-google-api-python-client2.164.0
-google-auth==2.38.0
-google-auth-httplib2==0.2.0
-google-auth-oauthlib==1.2.1
-googleapis-common-protos1.69.2
 httplib2==0.22.0
 idna==3.10
 itsdangerous==2.2.0
